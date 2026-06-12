@@ -1,0 +1,81 @@
+<!-- ── Sticky Navbar ─────────────────────────────────────────────────────── -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group" aria-label="CreekLink home">
+      <!-- CL Monogram -->
+      <div class="w-9 h-9 rounded-md bg-ck-yellow flex items-center justify-center flex-shrink-0
+                  group-hover:shadow-glow-yellow transition-all duration-200">
+        <span class="text-ck-black font-bold text-sm tracking-tight leading-none">CL</span>
+      </div>
+      <!-- Wordmark -->
+      <div class="hidden sm:block">
+        <span class="text-ck-black font-bold text-xl tracking-tight">Creek<span class="text-ck-yellow">Link</span></span>
+        <p class="text-ck-muted text-[10px] leading-none mt-0.5 hidden lg:block">Seamless Support. Stronger Connections.</p>
+      </div>
+    </a>
+
+    <!-- Nav links (desktop) -->
+    <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <li><a href="/"         class="nav-link text-ck-cream hover:text-ck-yellow transition-colors duration-200 <%- locals.path === '/' ? 'text-ck-yellow' : '' %>">Home</a></li>
+      <li><a href="/services" class="nav-link text-ck-cream hover:text-ck-yellow transition-colors duration-200 <%- locals.path === '/services' ? 'text-ck-yellow' : '' %>">Services</a></li>
+      <li><a href="/about"    class="nav-link text-ck-cream hover:text-ck-yellow transition-colors duration-200 <%- locals.path === '/about' ? 'text-ck-yellow' : '' %>">About</a></li>
+      <li><a href="/contact"  class="nav-link text-ck-cream hover:text-ck-yellow transition-colors duration-200 <%- locals.path === '/contact' ? 'text-ck-yellow' : '' %>">Contact</a></li>
+      <li><a href="/login"    class="nav-link text-ck-muted  hover:text-ck-cream  transition-colors duration-200 text-xs">Driver Login</a></li>
+    </ul>
+
+    <!-- CTA -->
+    <a href="/book" class="btn-primary text-sm hidden md:inline-flex">
+      Book Now <span aria-hidden="true">→</span>
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button id="nav-toggle" class="md:hidden p-2 rounded-md text-ck-cream hover:text-ck-yellow transition-colors"
+            aria-label="Toggle menu" aria-expanded="false">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path id="ham-open"  stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        <path id="ham-close" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="hidden"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-ck-border">
+    <ul class="flex flex-col gap-4 pt-4 px-2 text-sm font-medium">
+      <li><a href="/"         class="block text-ck-cream hover:text-ck-yellow transition-colors">Home</a></li>
+      <li><a href="/services" class="block text-ck-cream hover:text-ck-yellow transition-colors">Services</a></li>
+      <li><a href="/about"    class="block text-ck-cream hover:text-ck-yellow transition-colors">About</a></li>
+      <li><a href="/contact"  class="block text-ck-cream hover:text-ck-yellow transition-colors">Contact</a></li>
+      <li><a href="/login"    class="block text-ck-muted  hover:text-ck-cream  transition-colors text-xs">Driver Login</a></li>
+      <li><a href="/book"     class="btn-primary text-sm w-full justify-center mt-2">Book Now →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const navbar  = document.getElementById('navbar');
+  const toggle  = document.getElementById('nav-toggle');
+  const menu    = document.getElementById('mobile-menu');
+  const hamOpen  = document.getElementById('ham-open');
+  const hamClose = document.getElementById('ham-close');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.classList.add('navbar-scrolled');
+      navbar.style.paddingTop    = '10px';
+      navbar.style.paddingBottom = '10px';
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+      navbar.style.paddingTop    = '16px';
+      navbar.style.paddingBottom = '16px';
+    }
+  }, { passive: true });
+
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!open));
+    hamOpen.classList.toggle('hidden');
+    hamClose.classList.toggle('hidden');
+  });
+</script>

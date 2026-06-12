@@ -1,0 +1,260 @@
+<!-- ══ OPERATIONAL REACH ══════════════════════════════════════════════════════
+     Two-column layout: text + city chips left, UK map right
+     UK outline: recognisable abstract silhouette, cream fill, city dots
+═══════════════════════════════════════════════════════════════════════════ -->
+<section id="coverage-section"
+         class="bg-white overflow-hidden relative"
+         style="padding: clamp(64px,10vw,120px) 0;">
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+      <!-- ── LEFT: heading + description + city chips ────────────────────── -->
+      <div>
+        <p class="mb-3 text-xs font-semibold tracking-[0.2em] uppercase" style="color:#F4B400;">
+          Operational reach
+        </p>
+        <h2 class="font-bold mb-5"
+            style="font-size:clamp(28px,3.5vw,42px);color:#0D0D0D;letter-spacing:-0.02em;line-height:1.08;">
+          Coverage across<br>the entire UK
+        </h2>
+        <p class="text-base leading-relaxed mb-8" style="color:rgba(13,13,13,0.58);max-width:420px;">
+          24/7 inbound dispatch and booking support for taxi operators spanning every major UK region —
+          our agents are always on, wherever your fleet operates.
+        </p>
+
+        <!-- City chips -->
+        <div class="flex flex-wrap gap-3">
+          <% [
+            ['London',       '🔴'],
+            ['Manchester',   '🟡'],
+            ['Birmingham',   '⚪'],
+            ['Edinburgh',    '⚪'],
+            ['Leeds',        '⚪'],
+          ].forEach(([city, _dot]) => { %>
+          <span style="
+            display:inline-flex;align-items:center;gap:6px;
+            padding:6px 14px;border-radius:9999px;
+            background:rgba(13,13,13,0.04);
+            border:1px solid rgba(13,13,13,0.10);
+            font-size:13px;font-weight:500;color:#0D0D0D;
+            font-family:Poppins,system-ui,sans-serif;">
+            <span style="width:7px;height:7px;border-radius:50%;background:<%= city==='London'?'#F4B400':(city==='Manchester'?'rgba(13,13,13,0.45)':'rgba(13,13,13,0.18)') %>;flex-shrink:0;"></span>
+            <%= city %>
+          </span>
+          <% }) %>
+        </div>
+
+        <!-- Stats row -->
+        <div class="flex items-center gap-8 mt-10 pt-8" style="border-top:1px solid rgba(13,13,13,0.08);">
+          <div>
+            <p class="text-2xl font-bold" style="color:#0D0D0D;letter-spacing:-0.02em;">12+</p>
+            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">UK cities covered</p>
+          </div>
+          <div style="width:1px;height:32px;background:rgba(13,13,13,0.1);"></div>
+          <div>
+            <p class="text-2xl font-bold" style="color:#0D0D0D;letter-spacing:-0.02em;">24/7</p>
+            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">dispatch coverage</p>
+          </div>
+          <div style="width:1px;height:32px;background:rgba(13,13,13,0.1);"></div>
+          <div>
+            <p class="text-2xl font-bold" style="color:#F4B400;letter-spacing:-0.02em;">&lt;90s</p>
+            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">avg response time</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: SVG map ─────────────────────────────────────────────── -->
+      <div class="flex justify-center lg:justify-end">
+        <svg id="coverage-svg"
+             viewBox="54 14 210 424"
+             style="width:auto;height:clamp(560px,75vh,760px);max-width:100%;display:block;"
+             role="img"
+             aria-labelledby="cov-title cov-desc"
+             focusable="false">
+
+          <title id="cov-title">CreekLink UK operational coverage map</title>
+          <desc id="cov-desc">
+            Outline map of the United Kingdom showing key cities served by
+            CreekLink: London, Manchester, Birmingham, Edinburgh and Leeds,
+            with an animated taxi travelling the London–Manchester dispatch route.
+          </desc>
+
+          <defs>
+            <filter id="cov-shadow" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#0D0D0D" flood-opacity="0.09"/>
+            </filter>
+          </defs>
+
+          <!-- ── UK silhouette ────────────────────────────────────────────────
+               Accurate simplified outline — canvas 0 0 300 500, viewBox crop 54 14 210 424
+               Key features:
+               • Scotland: broad NE cape (Buchan Ness), ragged NW coast, Solway waist
+               • England:  East Anglia eastern bulge, SE to Kent, straight E coast
+               • Wales:    Pembroke westward protrusion, Cardigan Bay indent, Lleyn
+               • Cornwall: tapered SW tip (Lizard/Land's End region)
+          ──────────────────────────────────────────────────────────────────── -->
+          <path id="uk-body"
+                d="M 148,22
+                   C 172,18 210,38 238,70
+                   C 248,92 244,120 232,142
+                   C 226,158 225,178 228,198
+                   L 230,218
+                   C 232,230 238,250 242,268
+                   C 246,285 252,305 255,325
+                   C 255,340 250,352 244,365
+                   C 238,378 228,388 222,396
+                   C 210,412 190,422 165,428
+                   C 145,432 122,430 102,420
+                   C 88,410 72,402 66,388
+                   C 62,372 66,358 76,350
+                   C 84,342 94,342 102,350
+                   C 106,355 108,346 104,335
+                   C 100,322 84,316 70,312
+                   C 58,308 62,288 72,272
+                   C 76,256 82,244 86,246
+                   C 92,248 106,230 124,212
+                   C 128,202 126,185 120,172
+                   L 118,155
+                   C 115,145 108,134 96,112
+                   C 88,98 82,78 80,46
+                   C 86,30 115,20 148,22
+                   Z"
+                fill="#FAF8F3"
+                stroke="#0D0D0D"
+                stroke-opacity="0.13"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+                filter="url(#cov-shadow)"/>
+
+          <!-- ── Region labels ── -->
+          <text x="168" y="98"
+                font-size="10" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.26" text-anchor="middle"
+                font-weight="500" letter-spacing="0.5">SCOTLAND</text>
+
+          <text x="180" y="290"
+                font-size="10" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.20" text-anchor="middle"
+                font-weight="500" letter-spacing="0.5">ENGLAND</text>
+
+          <text x="87" y="300"
+                font-size="8" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.18" text-anchor="middle"
+                font-weight="500" letter-spacing="0.3">WALES</text>
+
+          <!-- ── Route line: London → Manchester ── -->
+          <path id="route-path"
+                d="M 214,383 C 195,352 178,325 165,306 C 158,293 159,288 159,282"
+                fill="none"
+                stroke="#F4B400"
+                stroke-width="2"
+                stroke-dasharray="4 8"
+                stroke-linecap="round"/>
+
+          <!-- ── City dots ── -->
+          <!-- Edinburgh -->
+          <circle cx="133" cy="160" r="3.5" fill="#0D0D0D" fill-opacity="0.35"/>
+          <circle cx="133" cy="160" r="7"   fill="#0D0D0D" fill-opacity="0.06"/>
+          <text x="142" y="164" font-size="10" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.45" font-weight="500">Edinburgh</text>
+
+          <!-- Leeds -->
+          <circle cx="177" cy="267" r="3"   fill="#0D0D0D" fill-opacity="0.30"/>
+          <text x="184" y="271" font-size="9.5" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.40" font-weight="500">Leeds</text>
+
+          <!-- Manchester — yellow, on route -->
+          <circle cx="159" cy="282" r="4"   fill="#F4B400" fill-opacity="0.9"/>
+          <circle cx="159" cy="282" r="9"   fill="#F4B400" fill-opacity="0.15"/>
+          <text x="167" y="286" font-size="10" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.55" font-weight="600">Manchester</text>
+
+          <!-- Birmingham -->
+          <circle cx="168" cy="333" r="3"   fill="#0D0D0D" fill-opacity="0.30"/>
+          <text x="175" y="337" font-size="9.5" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.40" font-weight="500">Birmingham</text>
+
+          <!-- London — yellow, on route -->
+          <circle cx="214" cy="383" r="4.5" fill="#F4B400" fill-opacity="0.9"/>
+          <circle cx="214" cy="383" r="10"  fill="#F4B400" fill-opacity="0.12"/>
+          <text x="222" y="388" font-size="10" font-family="Poppins,system-ui,sans-serif"
+                fill="#0D0D0D" fill-opacity="0.55" font-weight="600">London</text>
+
+          <!-- ── Taxi SIGN marker ───────────────────────────────────────────
+               Illuminated roof-sign centred at (0,0).
+               JS updates transform="translate(x,y) rotate(deg)" as it travels route.
+          ──────────────────────────────────────────────────────────────────── -->
+          <g id="taxi-marker" transform="translate(214,383)">
+            <!-- Mounting bracket (black base plate) -->
+            <rect x="-13" y="5"   width="26" height="4"  rx="1.5" fill="#111111"/>
+            <!-- Outer yellow sign body -->
+            <rect x="-15" y="-14" width="30" height="19" rx="5"   fill="#F4B400"/>
+            <!-- Inner warm-yellow glow ring -->
+            <rect x="-13" y="-12" width="26" height="15" rx="3.5" fill="#FFD84D"/>
+            <!-- Dark display panel -->
+            <rect x="-10" y="-10" width="20" height="11" rx="2.5" fill="#1A1208"/>
+            <!-- TAXI text -->
+            <text x="0" y="-3.5"
+                  font-size="5.5"
+                  font-family="Arial Black,Arial,sans-serif"
+                  font-weight="900"
+                  fill="#F4B400"
+                  text-anchor="middle"
+                  letter-spacing="1">TAXI</text>
+            <!-- Gloss highlight on top of sign -->
+            <rect x="-13" y="-13" width="26" height="4" rx="3" fill="rgba(255,255,255,0.28)"/>
+          </g>
+
+        </svg>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── GSAP ScrollTrigger ─────────────────────────────────────────────── -->
+  <script>
+    (function () {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+      function initCoverage() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+          setTimeout(initCoverage, 80);
+          return;
+        }
+        var routePath = document.getElementById('route-path');
+        var taxiGroup = document.getElementById('taxi-marker');
+        if (!routePath || !taxiGroup) return;
+
+        var totalLength = routePath.getTotalLength();
+
+        function setTaxiAt(progress) {
+          var p   = Math.max(0, Math.min(1, progress));
+          var len = p * totalLength;
+          var pt  = routePath.getPointAtLength(len);
+          var eps = 3;
+          var ptA = routePath.getPointAtLength(Math.max(0, len - eps));
+          var ptB = routePath.getPointAtLength(Math.min(totalLength, len + eps));
+          var deg = Math.atan2(ptB.y - ptA.y, ptB.x - ptA.x) * (180 / Math.PI);
+          deg = Math.max(-15, Math.min(15, deg));
+          taxiGroup.setAttribute(
+            'transform',
+            'translate(' + pt.x.toFixed(2) + ',' + pt.y.toFixed(2) + ') rotate(' + deg.toFixed(1) + ')'
+          );
+        }
+
+        if (prefersReduced) { setTaxiAt(0.5); return; }
+
+        setTaxiAt(0);
+        ScrollTrigger.create({
+          trigger: '#coverage-section',
+          start: 'top bottom',
+          end:   'bottom top',
+          onUpdate: function (self) { setTaxiAt(self.progress); }
+        });
+      }
+
+      initCoverage();
+    })();
+  </script>
+</section>

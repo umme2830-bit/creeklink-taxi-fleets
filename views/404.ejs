@@ -1,0 +1,53 @@
+<%- include('partials/head', { title, useThree: false }) %>
+<%- include('partials/navbar') %>
+
+<section class="min-h-screen bg-ck-black flex items-center justify-center px-6 py-20 relative overflow-hidden">
+
+  <!-- Animated route line illustration -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 600 400" width="100%" class="max-w-2xl opacity-10">
+      <!-- Grid dots -->
+      <% for(let x=0;x<600;x+=40){ for(let y=0;y<400;y+=40){ %>
+      <circle cx="<%= x %>" cy="<%= y %>" r="1" fill="#F4B400"/>
+      <% }} %>
+      <!-- Yellow route line -->
+      <path d="M50 200 Q150 100 300 200 T550 200" stroke="#F4B400" stroke-width="2"
+            stroke-dasharray="8 6" fill="none" class="route-line drawn"/>
+      <circle cx="50"  cy="200" r="6" fill="#F4B400" opacity="0.7"/>
+      <circle cx="550" cy="200" r="6" fill="#F4B400" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center max-w-lg">
+    <div class="w-20 h-20 rounded-2xl bg-ck-yellow/10 border border-ck-yellow/30 flex items-center justify-center mx-auto mb-8">
+      <svg class="w-10 h-10 text-ck-yellow" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+      </svg>
+    </div>
+
+    <p class="text-ck-yellow font-bold text-6xl mb-4">404</p>
+    <h1 class="text-white text-2xl md:text-3xl font-bold mb-4">Route not found.</h1>
+    <p class="text-white/60 text-base leading-relaxed mb-10">
+      Looks like this page took a wrong turn. Our dispatch team couldn't find it either — let's get you back on track.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="/"        class="btn-primary text-base px-8 py-3.5">Back to home →</a>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-md font-semibold text-white border border-white/30 bg-transparent transition-all duration-200 hover:-translate-y-0.5 hover:border-white/60 text-base">Contact support →</a>
+    </div>
+
+    <!-- Corner brackets motif -->
+    <div class="absolute top-8 left-8 w-8 h-8 border-t-2 border-l-2 border-ck-yellow/30" aria-hidden="true"></div>
+    <div class="absolute top-8 right-8 w-8 h-8 border-t-2 border-r-2 border-ck-yellow/30" aria-hidden="true"></div>
+    <div class="absolute bottom-8 left-8 w-8 h-8 border-b-2 border-l-2 border-ck-yellow/30" aria-hidden="true"></div>
+    <div class="absolute bottom-8 right-8 w-8 h-8 border-b-2 border-r-2 border-ck-yellow/30" aria-hidden="true"></div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<%- include('partials/whatsapp-fab') %>
+<script src="/js/main.js" defer></script>
+<script src="/js/borderglow.js" defer></script>
+</body>
+</html>

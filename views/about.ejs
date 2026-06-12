@@ -1,0 +1,327 @@
+<%- include('partials/head', { title, useThree: false }) %>
+<%- include('partials/navbar') %>
+
+<!-- ══ PAGE HERO ══════════════════════════════════════════════════════════ -->
+<section class="bg-white pt-36 pb-24 relative overflow-hidden">
+  <div class="absolute inset-0 uk-map-bg opacity-10 pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <div class="anim-fade-left">
+        <p class="section-label mb-3">Who we are</p>
+        <h1 class="font-bold text-ck-cream mb-6" style="font-size:clamp(32px,5vw,52px);line-height:1.15">
+          The inbound call centre<br>built for <span class="text-ck-yellow">UK taxi fleets.</span>
+        </h1>
+        <p class="text-ck-muted text-lg leading-relaxed mb-6">
+          CreekLink is a specialist contact centre delivering inbound customer support exclusively for taxi companies and private-hire operators across the United Kingdom.
+        </p>
+        <p class="text-ck-muted text-base leading-relaxed mb-8">
+          Every call we answer, every booking we log, and every driver we assist is done with one goal: keeping your fleet moving and your customers coming back.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/book"    class="btn-primary">Book a Ride →</a>
+          <a href="/contact" class="btn-secondary">Talk to us →</a>
+        </div>
+      </div>
+
+      <!-- UK map with city dots -->
+      <div class="flex justify-center anim-fade-right">
+        <svg viewBox="65 5 225 310"
+             width="260"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             aria-hidden="true"
+             style="height:auto;max-width:100%;">
+
+          <defs>
+            <filter id="about-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="0" stdDeviation="18" flood-color="#C9A84C" flood-opacity="0.18"/>
+            </filter>
+          </defs>
+
+          <!-- ── UK silhouette — same path as coverage section ────────────── -->
+          <path id="uk-outline"
+                class="route-line"
+                d="M 172,15
+                   C 185,24 206,33 210,42
+                   L 218,76
+                   C 213,98 210,112 210,128
+                   C 214,155 218,175 216,186
+                   C 210,214 200,232 198,244
+                   C 182,278 168,292 163,297
+                   C 147,302 124,300 116,297
+                   C 103,285 98,264 100,253
+                   L 104,220
+                   C 101,207 92,200 92,196
+                   C 91,183 102,172 108,168
+                   L 116,145
+                   L 113,128
+                   C 112,103 114,84 118,60
+                   C 128,36 153,22 172,15
+                   Z"
+                stroke="#C9A84C"
+                stroke-width="1.5"
+                fill="rgba(201,168,76,0.05)"
+                stroke-linejoin="round"
+                filter="url(#about-glow)"/>
+
+          <!-- ── Region labels ── -->
+          <text x="164" y="82"  font-size="8"   font-family="Poppins,system-ui,sans-serif"
+                fill="#C9A84C" fill-opacity="0.38" text-anchor="middle" font-weight="500" letter-spacing="0.5">SCOTLAND</text>
+          <text x="165" y="182" font-size="8"   font-family="Poppins,system-ui,sans-serif"
+                fill="#C9A84C" fill-opacity="0.30" text-anchor="middle" font-weight="500" letter-spacing="0.5">ENGLAND</text>
+          <text x="104" y="198" font-size="6.5" font-family="Poppins,system-ui,sans-serif"
+                fill="#C9A84C" fill-opacity="0.28" text-anchor="middle" font-weight="500" letter-spacing="0.3">WALES</text>
+
+          <!-- ── Route line: London → Manchester ── -->
+          <path d="M 196,238 C 181,214 165,192 154,172 C 146,158 140,150 136,140"
+                fill="none" stroke="#F4B400" stroke-width="1.5"
+                stroke-dasharray="4 7" stroke-linecap="round" opacity="0.65"/>
+
+          <!-- Edinburgh -->
+          <circle cx="168" cy="92"  r="3"   fill="#F4B400" opacity="0.80"/>
+          <circle cx="168" cy="92"  r="6.5" fill="#F4B400" opacity="0.12"/>
+
+          <!-- Leeds -->
+          <circle cx="168" cy="132" r="2.5" fill="#C9A84C" opacity="0.70"/>
+
+          <!-- Manchester — yellow, on route -->
+          <circle cx="136" cy="140" r="3.5" fill="#F4B400" opacity="0.90"/>
+          <circle cx="136" cy="140" r="7"   fill="#F4B400" opacity="0.15"/>
+
+          <!-- Birmingham -->
+          <circle cx="168" cy="180" r="2.5" fill="#C9A84C" opacity="0.70"/>
+
+          <!-- London — yellow, on route -->
+          <circle cx="196" cy="238" r="4"   fill="#F4B400" opacity="0.90"/>
+          <circle cx="196" cy="238" r="8.5" fill="#F4B400" opacity="0.14"/>
+
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ VISION & MISSION ═══════════════════════════════════════════════════ -->
+<section class="bg-ck-dark py-20 border-y border-ck-border">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+      <div class="card-dark p-6 anim-fade-up">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(244,180,0,0.12);border:1px solid rgba(244,180,0,0.22);">
+          <svg class="w-6 h-6 text-ck-yellow" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <p class="text-ck-yellow text-xs font-semibold uppercase tracking-widest mb-2">Our Vision</p>
+        <h3 class="text-white text-xl font-semibold mb-3">The UK's first contact centre built exclusively for taxi fleets.</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);">
+          To become the go-to contact centre for UK taxi and private-hire operators — delivering reliable, high-quality inbound support that helps fleets grow efficiently and sustainably.
+        </p>
+      </div>
+
+      <div class="card-dark p-6 anim-fade-up" style="animation-delay:0.1s">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(244,180,0,0.12);border:1px solid rgba(244,180,0,0.22);">
+          <svg class="w-6 h-6 text-ck-yellow" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
+          </svg>
+        </div>
+        <p class="text-ck-yellow text-xs font-semibold uppercase tracking-widest mb-2">Our Mission</p>
+        <h3 class="text-white text-xl font-semibold mb-3">Answer every call. Confirm every booking. Retain every customer.</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);">
+          To empower UK taxi operators with trained, verified agents and dependable 24/7 inbound support — so no booking is ever missed and every passenger interaction builds long-term loyalty.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT WE DO ════════════════════════════════════════════════════════ -->
+<section class="bg-white py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div class="anim-fade-left">
+        <p class="section-label mb-3">What we do</p>
+        <h2 class="section-title">Inbound support,<br>built around your <span class="text-ck-yellow">fleet.</span></h2>
+        <p class="text-ck-muted text-base leading-relaxed mb-8">
+          We connect UK taxi operators with carefully selected, taxi-trained remote agents who operate as a seamless extension of your dispatch team — answering calls in your company name, confirming bookings, handling driver queries, and managing customer issues around the clock.
+        </p>
+        <ul class="space-y-4">
+          <% [
+            ['Inbound Booking Calls',   'We answer every call in your company name, log bookings accurately and dispatch to your fleet immediately.'],
+            ['Customer Issue Resolution','Complaints, delays, lost property — we handle it professionally, protecting your brand reputation.'],
+            ['Driver Coordination',     'Real-time driver query management, compliance checks and shift support handled by our dedicated team.'],
+            ['Order Management',        'Booking amendments, cancellations and rebooking handled smoothly to keep customers loyal.'],
+          ].forEach(([h,d]) => { %>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-ck-yellow/10 border border-ck-yellow/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-ck-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-ck-cream font-semibold text-sm"><%= h %></p>
+              <p class="text-ck-muted text-sm"><%= d %></p>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="grid grid-cols-2 gap-5 anim-fade-right">
+        <% [
+          ['500+',  'Drivers supported across UK fleets'],
+          ['98%',   'Booking fulfilment rate — industry-leading'],
+          ['<90s',  'Average dispatch response time'],
+          ['24/7',  '365-day operations, no downtime ever'],
+        ].forEach(([num,desc]) => { %>
+        <div class="bg-ck-card border border-ck-border rounded-xl p-6 hover:border-ck-gold transition-colors duration-300 card-spotlight relative overflow-hidden">
+          <p class="text-3xl font-bold text-ck-yellow mb-2"><%= num %></p>
+          <p class="text-ck-muted text-sm leading-snug"><%= desc %></p>
+        </div>
+        <% }) %>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY CHOOSE US — 6 PILLARS ═════════════════════════════════════════ -->
+<section class="bg-ck-dark py-24">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="text-center mb-16">
+      <p class="section-label mb-3">Our standards</p>
+      <h2 class="section-title">Why CreekLink?</h2>
+      <p class="section-sub mx-auto text-center">Six pillars that protect your fleet and your customers every single day.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% [
+        ['24/7 Full-time Support',
+         'Our operations centre never closes. Every call is answered — at 3 AM on Bank Holiday Monday just as reliably as Tuesday at noon.',
+         'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z'],
+        ['Zero Compromise on Quality',
+         'KPIs tracked on every call. Quality control checks every week. We hold ourselves to the standard your passengers expect.',
+         'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z'],
+        ['Experienced Agents + Training',
+         'Every agent is trained specifically on UK taxi operations, PCO licensing terminology and private-hire regulations — not generic scripts.',
+         'M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5'],
+        ['Backup Agents + Backup Systems',
+         'Redundancy built in from day one. Backup agents, backup telephony and backup internet — your operations never go dark.',
+         'M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0H3'],
+        ['Data Protection under GDPR',
+         'Full GDPR compliance for all passenger data. Strict confidentiality protocols and privileged communication standards across every interaction.',
+         'M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z'],
+        ['One Fleet, One Partner',
+         'We work exclusively with one taxi operator per city. No conflicts of interest, no shared agents, complete loyalty to your brand.',
+         'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z'],
+      ].forEach(([h,d,path]) => { %>
+      <div class="card-dark p-6 anim-fade-up">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(244,180,0,0.12);border:1px solid rgba(244,180,0,0.22);">
+          <svg class="w-6 h-6 text-ck-yellow" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="<%= path %>"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-semibold text-base mb-2"><%= h %></h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.62);"><%= d %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OUR PROCESS ════════════════════════════════════════════════════════ -->
+<section class="bg-white py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.025]" style="background-image:radial-gradient(circle,#F4B400 1px,transparent 1px);background-size:32px 32px;" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 md:px-12">
+    <div class="text-center mb-16">
+      <p class="section-label mb-3">A proven process</p>
+      <h2 class="section-title">How we get you<br><span class="text-ck-yellow">up and running.</span></h2>
+      <p class="section-sub mx-auto text-center">From first conversation to live operations in as little as 48 hours.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <% [
+        ['01','Discovery',      'We learn your fleet size, call volumes, dispatch software and peak hours — before a single agent is assigned.'],
+        ['02','Onboarding',     'Agent interviews, reference checks and assessments specific to taxi operations. Only the right fit moves forward.'],
+        ['03','Client Approval','No agent goes live without your sign-off. You confirm every person representing your brand.'],
+        ['04','Accountability', 'Live KPI dashboards, weekly quality reviews and recorded calls — full visibility at all times.'],
+        ['05','Meeting Pulse',  'Monthly performance reviews and annual strategy sessions to continuously improve your operations.'],
+      ].forEach(([num,title,desc]) => { %>
+      <div class="flex flex-col items-center text-center anim-fade-up relative">
+        <!-- Connector line (not on last item) -->
+        <div class="hidden md:block absolute top-7 left-1/2 w-full h-px bg-ck-border" style="z-index:0;" aria-hidden="true"></div>
+        <div class="w-14 h-14 rounded-full bg-ck-yellow flex items-center justify-center mb-5 relative z-10 flex-shrink-0 shadow-glow-yellow">
+          <span class="text-ck-black font-bold text-sm"><%= num %></span>
+        </div>
+        <h4 class="text-ck-cream font-semibold text-sm mb-2"><%= title %></h4>
+        <p class="text-ck-muted text-xs leading-relaxed"><%= desc %></p>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ONE FLEET ONE PARTNER CALLOUT ═════════════════════════════════════ -->
+<section class="bg-ck-dark py-20 relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ck-yellow to-transparent" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+      <div class="anim-fade-left">
+        <p class="section-label mb-3">Exclusive model</p>
+        <h2 class="section-title">One fleet.<br>One partner.<br><span class="text-ck-yellow">Zero conflicts.</span></h2>
+        <p class="text-ck-muted text-base leading-relaxed mb-6">
+          We operate on a strict "One Fleet, One Partner" model. We take on one taxi operator per city — meaning your agents are never shared with a competitor, your dispatching intel stays confidential, and our loyalty is 100% yours.
+        </p>
+        <p class="text-ck-muted text-base leading-relaxed mb-8">
+          This isn't just a policy — it's the foundation of how we build trust. When we partner with you, we are your call centre. Full stop.
+        </p>
+        <a href="/contact" class="btn-primary">Claim your city →</a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-5 anim-fade-right">
+        <% [
+          ['Integrity',        'We operate transparently — no hidden charges, no undisclosed agent sharing.'],
+          ['Trust',            'Earned through consistent performance, not promised in a contract.'],
+          ['Human-First',      'Real agents, real relationships — we go beyond automated systems.'],
+          ['Confidentiality',  'GDPR-compliant data handling and privileged communication on every call.'],
+        ].forEach(([h,d]) => { %>
+        <div class="bg-ck-card border border-ck-border rounded-xl p-5 hover:border-ck-gold transition-colors duration-300 card-spotlight relative overflow-hidden">
+          <p class="text-ck-yellow font-bold text-sm mb-2"><%= h %></p>
+          <p class="text-ck-muted text-xs leading-relaxed"><%= d %></p>
+        </div>
+        <% }) %>
+      </div>
+
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ck-border to-transparent" aria-hidden="true"></div>
+</section>
+
+<!-- ══ CTA ════════════════════════════════════════════════════════════════ -->
+<section class="bg-ck-dark py-20 border-t border-ck-border">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <h2 class="section-title">Ready to outsource<br>with <span class="text-ck-yellow">confidence?</span></h2>
+    <p class="section-sub mx-auto text-center mb-10">No long contracts. No setup fees. Operational for your fleet within 48 hours.</p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="/contact" class="btn-primary text-base px-8 py-4">Book a free consultation →</a>
+      <a href="/services" class="btn-secondary text-base px-8 py-4">View services →</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<%- include('partials/whatsapp-fab') %>
+<script src="/js/main.js" defer></script>
+<script src="/js/borderglow.js" defer></script>
+<script src="/js/tiltedcard.js" defer></script>
+</body>
+</html>

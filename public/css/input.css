@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-white text-ck-cream font-poppins;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #F4B400; color: #0D0B08; }
+  :focus-visible { outline: 2px solid #F4B400; outline-offset: 3px; }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-ck-black bg-ck-yellow
+           transition-all duration-200 hover:-translate-y-0.5 hover:shadow-glow-yellow active:scale-95;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-ck-cream
+           border border-ck-gold-btn bg-transparent
+           transition-all duration-200 hover:-translate-y-0.5 hover:border-ck-gold hover:shadow-glow-gold active:scale-95;
+  }
+  .btn-tertiary {
+    @apply inline-flex items-center gap-2 text-ck-cream font-medium
+           transition-all duration-200 hover:text-ck-yellow;
+  }
+  /* Light page variant — white bg context, dark border */
+  .btn-secondary-dark {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-ck-black
+           border border-ck-black/20 bg-transparent
+           transition-all duration-200 hover:-translate-y-0.5 hover:border-ck-black active:scale-95;
+  }
+
+  /* ── Form inputs ── */
+  .ck-input {
+    @apply w-full bg-transparent border-b border-ck-border text-ck-cream placeholder-ck-muted
+           px-0 py-3 text-body outline-none transition-all duration-300
+           focus:border-ck-yellow;
+  }
+  .ck-input-wrap { @apply relative; }
+  .ck-input-wrap::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-ck-yellow transition-all duration-300;
+  }
+  .ck-input-wrap:focus-within::after { @apply w-full; }
+
+  .ck-select {
+    @apply w-full bg-transparent border-b border-ck-border text-ck-cream
+           px-0 py-3 text-body outline-none transition-all duration-300
+           focus:border-ck-yellow appearance-none cursor-pointer;
+  }
+
+  /* ── Cards ── */
+  .ck-card {
+    @apply bg-ck-card border border-ck-border rounded-xl p-6 shadow-warm
+           transition-all duration-300
+           hover:bg-ck-card-hover hover:border-ck-gold hover:shadow-warm-lg hover:scale-[1.02];
+  }
+
+  /* ── Section headings ── */
+  .section-label {
+    @apply text-ck-yellow text-sm-label font-semibold tracking-[0.2em] uppercase;
+  }
+  .section-title {
+    @apply text-h2 font-semibold text-ck-cream mt-2 mb-4;
+  }
+  .section-sub {
+    @apply text-ck-muted text-body max-w-xl;
+  }
+
+  /* ── Status badges ── */
+  .badge-pending   { @apply px-3 py-1 rounded-full text-xs font-semibold bg-ck-muted/20 text-ck-muted border border-ck-muted/30; }
+  .badge-confirmed { @apply px-3 py-1 rounded-full text-xs font-semibold bg-ck-yellow text-ck-black; }
+  .badge-completed { @apply px-3 py-1 rounded-full text-xs font-semibold bg-ck-dark text-ck-cream border border-ck-gold; }
+  .badge-cancelled { @apply px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-600 border border-red-200; }
+
+  /* ── Divider ── */
+  .ck-divider { @apply border-t border-ck-border; }
+
+  /* ── UK map background motif ── */
+  .uk-map-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 340' fill='none'%3E%3Cpath d='M100 10 C80 20 60 40 70 70 C55 90 50 120 65 140 C50 160 55 200 70 210 C60 240 80 270 100 280 C120 270 140 240 130 210 C145 200 150 160 135 140 C150 120 145 90 130 70 C140 40 120 20 100 10Z' stroke='%23F4B400' stroke-width='1' fill='none' opacity='0.06'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #F4B400 0%, #C9A84C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .warm-overlay {
+    background: radial-gradient(ellipse at center, transparent 30%, #FFFFFF 100%);
+  }
+  .glass-card {
+    background: rgba(13,11,8,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(201,168,76,0.18);
+  }
+}
+
+/* ── Navbar ── */
+#navbar {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid #E5E0D8;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+}
+.navbar-scrolled {
+  background: rgba(255,255,255,0.98) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.10) !important;
+}
+
+/* ── WhatsApp FAB pulse ── */
+@keyframes ck-pulse {
+  0%   { box-shadow: 0 0 0 0   rgba(244,180,0,0.5); }
+  70%  { box-shadow: 0 0 0 16px rgba(244,180,0,0); }
+  100% { box-shadow: 0 0 0 0   rgba(244,180,0,0); }
+}
+.wa-fab { animation: ck-pulse 2.4s infinite; }
+
+/* ── Dark card variant — near-black bg, white text, yellow border on hover ── */
+.card-dark {
+  background: #0D0B08;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.22);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-dark:hover {
+  border-color: rgba(244, 180, 0, 0.40);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.30);
+}
+
+/* ── 3D card flip ── */
+.flip-card { perspective: 1000px; }
+.flip-card-inner {
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  transform-style: preserve-3d;
+  position: relative;
+}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-card-back { transform: rotateY(180deg); position: absolute; inset: 0; }
+
+/* ── Count-up number ── */
+.count-num { font-variant-numeric: tabular-nums; }
+
+/* ── SVG route line draw ── */
+.route-line { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
+.route-line.drawn { animation: draw-route 2s ease forwards; }
+@keyframes draw-route {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── Scroll animations — initial hidden state set by JS, not CSS ──
+   This ensures text is always visible if GSAP/ScrollTrigger fails to load. */
+.anim-fade-up, .anim-fade-left, .anim-fade-right { /* no hidden state here */ }
+
+/* ── Reduced motion overrides ── */
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade-left, .anim-fade-right { opacity: 1 !important; transform: none !important; }
+  .route-line { stroke-dashoffset: 0 !important; }
+  .wa-fab { animation: none; }
+  .flip-card:hover .flip-card-inner { transform: none; }
+}
+
+/* ── Three.js canvas ── */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ── Hero map card glow wrapper ── */
+#hero-map-card .glass-card {
+  transition: box-shadow 0.3s ease;
+}

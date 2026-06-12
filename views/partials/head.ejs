@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CreekLink — Seamless BPO support for UK taxi and cab operations. 24/7 dispatch, booking management, and driver assistance." />
+  <title><%= title %></title>
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23F4B400'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Poppins,sans-serif' font-weight='700' font-size='14' fill='%230D0B08'>CL</text></svg>" />
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind compiled CSS -->
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- BorderGlow component CSS -->
+  <link rel="stylesheet" href="/css/borderglow.css" />
+
+  <!-- TiltedCard 3D tilt effect CSS -->
+  <link rel="stylesheet" href="/css/tiltedcard.css" />
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- LiquidChrome WebGL background (fixed, behind all content) -->
+  <script src="/js/liquid-chrome.js" defer></script>
+
+  <!-- Three.js CDN (loaded only on pages that need it via data attr) -->
+  <% if (typeof useThree !== 'undefined' && useThree) { %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <% } %>
+
+  <style>
+    /* Critical inline styles to prevent FOUC */
+    body { background-color: #FFFFFF; color: #1A1510; font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-ck-cream font-poppins antialiased overflow-x-hidden">

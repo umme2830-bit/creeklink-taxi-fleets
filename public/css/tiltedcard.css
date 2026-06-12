@@ -1,0 +1,64 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   TiltedCard — vanilla CSS port (React Bits)
+   Applied to .card-dark and .ck-card elements via tiltedcard.js
+───────────────────────────────────────────────────────────────────────── */
+
+.tilt-card {
+  will-change: transform;
+  transform-style: preserve-3d;
+  /* Remove transform from CSS transition — JS drives it via spring loop */
+  transition-property: color, background-color, border-color, box-shadow, opacity !important;
+}
+
+/* Cancel Tailwind's hover:scale on .ck-card — the spring handles scale */
+.tilt-card.ck-card:hover {
+  transform: none;
+}
+
+/* ── Floating cursor tooltip ─────────────────────────────────────────── */
+.tilt-tooltip {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  border-radius: 6px;
+  background: rgba(13, 11, 8, 0.90);
+  color: #F5F2EB;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-family: Poppins, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  opacity: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 180, 0, 0.30);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transform-origin: left top;
+}
+
+/* ── Mobile: disable tilt (not optimised for touch) ─────────────────── */
+@media (max-width: 768px) {
+  .tilt-card {
+    transform: none !important;
+    will-change: auto;
+    transition-property: all !important;
+  }
+  .tilt-tooltip {
+    display: none;
+  }
+}
+
+/* ── Reduced motion: disable tilt entirely ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .tilt-card {
+    transform: none !important;
+    will-change: auto;
+    transition-property: all !important;
+  }
+  .tilt-tooltip {
+    display: none;
+  }
+}

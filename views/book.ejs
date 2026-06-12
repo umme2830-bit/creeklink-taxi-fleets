@@ -1,0 +1,145 @@
+<%- include('partials/head', { title, useThree: false }) %>
+<%- include('partials/navbar') %>
+
+<section class="bg-white min-h-screen pt-32 pb-20">
+  <div class="max-w-5xl mx-auto px-6 md:px-12">
+
+    <!-- Header -->
+    <div class="mb-12 text-center">
+      <p class="section-label mb-3">Start your journey</p>
+      <h1 class="font-bold text-ck-cream mb-4" style="font-size:clamp(28px,4vw,44px);line-height:1.2">
+        Book a <span class="text-ck-yellow">ride.</span>
+      </h1>
+      <p class="text-ck-muted max-w-md mx-auto">Fill in your details and our dispatch team will confirm your booking immediately.</p>
+    </div>
+
+    <!-- Success state -->
+    <% if (success) { %>
+    <div id="success-banner" class="bg-ck-card border border-ck-yellow/40 rounded-xl p-8 text-center max-w-lg mx-auto">
+      <!-- Animated checkmark -->
+      <div class="w-16 h-16 rounded-full bg-ck-yellow/10 border-2 border-ck-yellow flex items-center justify-center mx-auto mb-5" id="check-circle">
+        <svg class="w-8 h-8 text-ck-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" class="route-line drawn"/>
+        </svg>
+      </div>
+      <h2 class="text-ck-cream text-2xl font-bold mb-2">Booking received!</h2>
+      <p class="text-ck-muted text-sm mb-6">We'll confirm your ride within minutes. Check your email for confirmation details.</p>
+      <div class="flex gap-3 justify-center">
+        <a href="/book"  class="btn-primary text-sm">Book another →</a>
+        <a href="/"      class="btn-secondary text-sm">Back to home →</a>
+      </div>
+    </div>
+    <% } else { %>
+
+    <!-- Error -->
+    <% if (error) { %>
+    <div class="bg-red-900/20 border border-red-800/40 rounded-lg p-4 mb-8 max-w-2xl mx-auto text-red-400 text-sm">
+      <%= error %>
+    </div>
+    <% } %>
+
+    <!-- Form -->
+    <div class="bg-ck-dark border border-ck-border rounded-2xl p-8 md:p-12 max-w-2xl mx-auto">
+      <form action="/book" method="POST" novalidate>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+
+          <!-- Full Name -->
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="fullName">Full Name</label>
+            <input class="ck-input" type="text" id="fullName" name="fullName" placeholder="James Harrington" required autocomplete="name" />
+          </div>
+
+          <!-- Phone -->
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="phone">Phone Number</label>
+            <input class="ck-input" type="tel" id="phone" name="phone" placeholder="+44 7700 900000" required autocomplete="tel" />
+          </div>
+
+          <!-- Email -->
+          <div class="ck-input-wrap sm:col-span-2">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="email">Email Address</label>
+            <input class="ck-input" type="email" id="email" name="email" placeholder="james@company.co.uk" required autocomplete="email" />
+          </div>
+
+          <!-- Pickup -->
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="pickup">Pickup Location</label>
+            <input class="ck-input" type="text" id="pickup" name="pickup" placeholder="Heathrow Terminal 5" required />
+          </div>
+
+          <!-- Drop-off -->
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="dropoff">Drop-off Location</label>
+            <input class="ck-input" type="text" id="dropoff" name="dropoff" placeholder="Mayfair, London W1" required />
+          </div>
+
+          <!-- Date -->
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="date">Date</label>
+            <input class="ck-input" type="date" id="date" name="date" required
+                   min="<%= new Date().toISOString().split('T')[0] %>" />
+          </div>
+
+          <!-- Time -->
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="time">Time</label>
+            <input class="ck-input" type="time" id="time" name="time" required />
+          </div>
+
+          <!-- Service Type -->
+          <div class="sm:col-span-2">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-3" for="serviceType">Service Type</label>
+            <div class="grid grid-cols-3 gap-4">
+              <% [['economy','Economy Cab','£8+'],['business','Business Class','£22+'],['airport','Airport Transfer','£35+']].forEach(([val,label,price]) => { %>
+              <label class="relative cursor-pointer">
+                <input type="radio" name="serviceType" value="<%= val %>" class="peer sr-only" <%= val==='economy'?'checked':'' %> />
+                <div class="border border-ck-border rounded-lg p-4 text-center transition-all duration-200
+                            peer-checked:border-ck-yellow peer-checked:bg-ck-yellow/5
+                            hover:border-ck-gold">
+                  <p class="text-ck-cream text-sm font-semibold"><%= label %></p>
+                  <p class="text-ck-yellow text-xs font-bold mt-1"><%= price %></p>
+                </div>
+              </label>
+              <% }) %>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Submit -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
+          <button type="submit" class="btn-primary text-base px-8 py-4 w-full sm:w-auto justify-center">
+            Confirm Booking →
+          </button>
+          <p class="text-ck-muted text-xs text-center">Our team confirms within 5 minutes. No payment needed now.</p>
+        </div>
+
+      </form>
+    </div>
+
+    <% } %>
+
+    <!-- Info strip -->
+    <div class="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mx-auto text-center">
+      <% [
+        ['Instant confirmation','We respond within 5 minutes, day or night.'],
+        ['Free cancellation','Cancel up to 1 hour before your ride.'],
+        ['Secure & private','Your data is never shared or sold.'],
+      ].forEach(([h,d]) => { %>
+      <div class="text-center">
+        <p class="text-ck-yellow font-semibold text-sm mb-1"><%= h %></p>
+        <p class="text-ck-muted text-xs"><%= d %></p>
+      </div>
+      <% }) %>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+<%- include('partials/whatsapp-fab') %>
+<script src="/js/main.js" defer></script>
+<script src="/js/borderglow.js" defer></script>
+</body>
+</html>

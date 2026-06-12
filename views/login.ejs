@@ -1,0 +1,71 @@
+<%- include('partials/head', { title, useThree: false }) %>
+
+<!-- No navbar on login — standalone page -->
+<div class="min-h-screen bg-ck-dark flex items-center justify-center px-6 py-12">
+
+  <div class="w-full max-w-md">
+
+    <!-- Logo -->
+    <div class="flex items-center justify-center gap-3 mb-10">
+      <div class="w-10 h-10 rounded-md bg-ck-yellow flex items-center justify-center">
+        <span class="text-ck-black font-bold">CL</span>
+      </div>
+      <span class="text-ck-cream font-bold text-2xl">Creek<span class="text-ck-yellow">Link</span></span>
+    </div>
+
+    <!-- Card -->
+    <div class="bg-ck-card border border-ck-gold rounded-2xl p-8 md:p-10 shadow-warm-lg">
+      <h1 class="text-ck-cream text-2xl font-bold mb-1">Driver login</h1>
+      <p class="text-ck-muted text-sm mb-8">Access your bookings and shift dashboard.</p>
+
+      <!-- Error -->
+      <% if (error) { %>
+      <div class="bg-red-900/20 border border-red-800/40 rounded-lg p-3 mb-6 text-red-400 text-sm flex items-center gap-2">
+        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+        </svg>
+        <%= error %>
+      </div>
+      <% } %>
+
+      <form action="/login" method="POST" novalidate>
+
+        <div class="space-y-7">
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="l-email">Email address</label>
+            <input class="ck-input" type="email" id="l-email" name="email"
+                   placeholder="driver@creeklink.com" required autocomplete="email" />
+          </div>
+          <div class="ck-input-wrap">
+            <label class="block text-ck-muted text-xs font-semibold tracking-wider uppercase mb-2" for="l-pass">Password</label>
+            <input class="ck-input" type="password" id="l-pass" name="password"
+                   placeholder="••••••••" required autocomplete="current-password" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary w-full justify-center mt-10 text-base py-3.5">
+          Sign in →
+        </button>
+
+      </form>
+
+      <!-- Demo hint -->
+      <div class="mt-6 p-4 bg-ck-dark rounded-lg border border-ck-border text-xs text-ck-muted">
+        <p class="font-semibold text-ck-cream mb-1">Demo credentials</p>
+        <p>Email: <span class="text-ck-yellow font-mono">driver@creeklink.com</span></p>
+        <p>Password: <span class="text-ck-yellow font-mono">demo1234</span></p>
+      </div>
+    </div>
+
+    <div class="text-center mt-6">
+      <a href="/" class="btn-tertiary text-sm text-ck-muted hover:text-ck-cream">← Back to CreekLink</a>
+    </div>
+
+  </div>
+</div>
+
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/css/borderglow.css" />
+<script src="/js/borderglow.js" defer></script>
+</body>
+</html>
