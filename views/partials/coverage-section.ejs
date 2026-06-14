@@ -19,28 +19,28 @@
           Coverage across<br>the entire UK
         </h2>
         <p class="text-base leading-relaxed mb-8" style="color:rgba(13,13,13,0.58);max-width:420px;">
-          24/7 inbound dispatch and booking support for taxi operators spanning every major UK region —
-          our agents are always on, wherever your fleet operates.
+          24/7 inbound dispatch and call answering for taxi and private-hire operators across the entire UK —
+          Scotland to Cornwall, we've got every corner covered.
         </p>
 
-        <!-- City chips -->
+        <!-- Region chips -->
         <div class="flex flex-wrap gap-3">
           <% [
-            ['London',       '🔴'],
-            ['Manchester',   '🟡'],
-            ['Birmingham',   '⚪'],
-            ['Edinburgh',    '⚪'],
-            ['Leeds',        '⚪'],
-          ].forEach(([city, _dot]) => { %>
+            ['Scotland',       true],
+            ['North England',  false],
+            ['Midlands',       false],
+            ['Wales',          false],
+            ['South & London', true],
+          ].forEach(([region, highlight]) => { %>
           <span style="
             display:inline-flex;align-items:center;gap:6px;
             padding:6px 14px;border-radius:9999px;
-            background:rgba(13,13,13,0.04);
-            border:1px solid rgba(13,13,13,0.10);
+            background:<%= highlight ? 'rgba(244,180,0,0.08)' : 'rgba(13,13,13,0.04)' %>;
+            border:1px solid <%= highlight ? 'rgba(244,180,0,0.28)' : 'rgba(13,13,13,0.10)' %>;
             font-size:13px;font-weight:500;color:#0D0D0D;
             font-family:Poppins,system-ui,sans-serif;">
-            <span style="width:7px;height:7px;border-radius:50%;background:<%= city==='London'?'#F4B400':(city==='Manchester'?'rgba(13,13,13,0.45)':'rgba(13,13,13,0.18)') %>;flex-shrink:0;"></span>
-            <%= city %>
+            <span style="width:7px;height:7px;border-radius:50%;background:<%= highlight ? '#F4B400' : 'rgba(13,13,13,0.20)' %>;flex-shrink:0;"></span>
+            <%= region %>
           </span>
           <% }) %>
         </div>
@@ -48,8 +48,8 @@
         <!-- Stats row -->
         <div class="flex items-center gap-8 mt-10 pt-8" style="border-top:1px solid rgba(13,13,13,0.08);">
           <div>
-            <p class="text-2xl font-bold" style="color:#0D0D0D;letter-spacing:-0.02em;">12+</p>
-            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">UK cities covered</p>
+            <p class="text-2xl font-bold" style="color:#0D0D0D;letter-spacing:-0.02em;">UK-wide</p>
+            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">nationwide coverage</p>
           </div>
           <div style="width:1px;height:32px;background:rgba(13,13,13,0.1);"></div>
           <div>
@@ -58,8 +58,8 @@
           </div>
           <div style="width:1px;height:32px;background:rgba(13,13,13,0.1);"></div>
           <div>
-            <p class="text-2xl font-bold" style="color:#F4B400;letter-spacing:-0.02em;">&lt;90s</p>
-            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">avg response time</p>
+            <p class="font-bold leading-tight" style="color:#F4B400;font-size:1rem;">We never miss<br>your call</p>
+            <p class="text-xs mt-0.5" style="color:rgba(13,13,13,0.5);">every call answered</p>
           </div>
         </div>
       </div>
